@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DesignPattern.Observer
+{
+	public class RandomNumberGenerator : NumberGenerator
+	{
+		private Random random = new Random();
+		private int number;
+
+		public override void Execute()
+		{
+			for(int i= 0; i < 20; i++)
+			{
+				number = random.Next(50);
+				NotifyObservers();
+			}
+		}
+
+		public override int GetNumber()
+		{
+			// この仕事は、 C# ならプロパティでやってもいいな。
+			return number;
+		}
+	}
+}
